@@ -3,76 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-   
+    <title>Air Nike</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="mobile.css">
 </head>
 <body>
     <header>
-      <h1>AIR<span> Nike</span></h1> 
-      <ul>
-        <li><a href="">Acceuille</a></li>
-        <li><a href="">Catalogue</a></li>
-        <li><a href="">A propos</a></li>
-    </ul> 
-    <button>Commander</button>
+      <h1>AIR<span> Nike</span></h1>
+      <button class="menu-toggle" type="button" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="main-nav">
+        <span></span><span></span><span></span>
+      </button>
+      <ul id="main-nav">
+        <li><a href="#principale">Accueil</a></li>
+        <li><a href="#catalogue">Catalogue</a></li>
+        <li><a href="#catalogue">À propos</a></li>
+      </ul>
+      <button class="header-cta" type="button">Commander</button>
     </header>
-    <seection id="principale" >
-           <div class="hero">
-            <h1 >AIR <span> Nike</span></h1>
-            <p >Lorem ipsum dolor sit amet consectetur 
-            fuga error fugiat asperiores <br>
-            impedit quis. Fugiat ad amet, doloremque minus. 
-            Sumenda!</p>
-                <button>Commander</button>
-        </div>
-    </seection>
-    <section id="catalogue">
-        <h3> Notre Catalogue</h3>
-        <p id="vos">Découvrez vos modèle Nike pour le sport et pour toute Occasion Confort reunis. <br>
-             Libraison 48h a Brazzaville Tu attends quoi ??
-        </p>
-        <div class="grille">
-            <div class="carte">
-                <img src="Images/4.jpg">
-                <p id="prix">12 500 FCFA</p>
-                <h4>Nike Aire</h4>
-                <button>Acheter</button>
-            </div>
-            <div class="carte">
-                <img src="Images/5.jpg">
-                <p id="prix">12 500 FCFA</p>
-                <h4>Nike Aire</h4>
-                <button>Acheter</button>
-            </div>
-            <div class="carte">
-                <img src="Images/33.jpg">
-                <p id="prix">12 500 FCFA</p>
-                <h4>Nike Aire</h4>
-                <button>Acheter</button>
-            </div>
-            <div class="carte">
-                <img src="Images/26.jpg">
-                <p id="prix">12 500 FCFA</p>
-                <h4>Nike Aire</h4>
-                <button>Acheter</button>
-            </div>
-            <div class="carte">
-                <img src="Images/42.jpg">
-                <p id="prix">12 500 FCFA</p>
-                <h4>Nike Aire</h4>
-                <button>Acheter</button>
-            </div>
-            <div class="carte">
-                <img src="Images/43.jpg">
-                <p id="prix">12 500 FCFA</p>
-                <h4>Nike Aire</h4>
-                <button>Acheter</button>
-            </div>
+    <section id="principale">
+        <div class="hero">
+            <h1>AIR <span>Nike</span></h1>
+            <p>Lorem ipsum dolor sit amet consectetur fuga error fugiat asperiores<br>
+            impedit quis. Fugiat ad amet, doloremque minus. Sumenda!</p>
+            <button type="button">Commander</button>
         </div>
     </section>
-    <footer>
-    <h2>livrable de la S3</h2>
-    </footer>
+    <section id="catalogue">
+        <h3>Notre Catalogue</h3>
+        <p id="vos">Découvrez vos modèles Nike pour le sport et pour toute occasion, confort réunis.<br>
+        Livraison 48h à Brazzaville. Tu attends quoi ?</p>
+        <div class="grille">
+            <div class="carte"><img src="Images/4.jpg" alt="Chaussure Nike Air"><p id="prix">12 500 FCFA</p><h4>Nike Air</h4><button type="button">Acheter</button></div>
+            <div class="carte"><img src="Images/5.jpg" alt="Chaussure Nike Air"><p id="prix">12 500 FCFA</p><h4>Nike Air</h4><button type="button">Acheter</button></div>
+            <div class="carte"><img src="Images/33.jpg" alt="Chaussure Nike Air"><p id="prix">12 500 FCFA</p><h4>Nike Air</h4><button type="button">Acheter</button></div>
+            <div class="carte"><img src="Images/26.jpg" alt="Chaussure Nike Air"><p id="prix">12 500 FCFA</p><h4>Nike Air</h4><button type="button">Acheter</button></div>
+            <div class="carte"><img src="Images/42.jpg" alt="Chaussure Nike Air"><p id="prix">12 500 FCFA</p><h4>Nike Air</h4><button type="button">Acheter</button></div>
+            <div class="carte"><img src="Images/43.jpg" alt="Chaussure Nike Air"><p id="prix">12 500 FCFA</p><h4>Nike Air</h4><button type="button">Acheter</button></div>
+        </div>
+    </section>
+    <footer><h2>Livrable de la S3</h2></footer>
+    <script>
+      const menuButton = document.querySelector('.menu-toggle');
+      const menu = document.getElementById('main-nav');
+      function closeMenu() {
+        menu.classList.remove('is-open');
+        menuButton.setAttribute('aria-expanded', 'false');
+        menuButton.setAttribute('aria-label', 'Ouvrir le menu');
+      }
+      menuButton.addEventListener('click', () => {
+        const isOpen = menu.classList.toggle('is-open');
+        menuButton.setAttribute('aria-expanded', String(isOpen));
+        menuButton.setAttribute('aria-label', isOpen ? 'Fermer le menu' : 'Ouvrir le menu');
+      });
+      menu.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMenu));
+      document.addEventListener('keydown', event => { if (event.key === 'Escape') closeMenu(); });
+      window.addEventListener('resize', () => { if (window.innerWidth > 768) closeMenu(); });
+    </script>
 </body>
 </html>
